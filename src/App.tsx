@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Login from './Components/Login';
+import Page from './Components/Page';
+import Header from './Components/Header';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import styled from 'styled-components'
+const App = () => {
 
-function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        <>
+        <Header/>
+        <BrowserRouter>
+          <Switch>
+            <Wrapper>
+              <Route exact path='/'>
+                <Page/>
+              </Route>
+              <Route path="/login">
+                <Login/>
+              </Route>
+            </Wrapper>
+          </Switch>
+        </BrowserRouter>
+        </>
+      
+  )
 }
+
+const Wrapper = styled.div`
+box-sizing: border-box;
+width: 100vw;
+height: 100vh;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+`
 
 export default App;
